@@ -1,0 +1,31 @@
+{
+    "schemaVersion": 1,
+    "id": "avai",
+    "version": "0.0.1",
+    "name": "AvAI",
+    "description": "AvAI is a project to improve the vanilla AI of Minecraft",
+    "authors": [
+        "Emanuel"
+    ],
+    "contact": {
+        "homepage": "",
+        "sources": "https://github.com/Emanuel71836/AvAI"
+    },
+    "license": "GPL-3.0",
+    "icon": "assets/avai/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "com.avai.AdvancedAIMod" 
+        ]
+    },
+    "mixins": [
+        "avai.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.17.2",
+        "minecraft": "~1.20.1",
+        "java": ">=17",
+        "fabric-api": "*"
+    }
+}

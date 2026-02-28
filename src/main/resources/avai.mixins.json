@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.avai.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "avai.refmap.json",
+  "mixins": [
+    "MobAIMixin",
+    "PathNavigationAccessor"
+  ],
+  "client": [],
+  "server": []
+}
