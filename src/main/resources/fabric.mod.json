@@ -4,9 +4,7 @@
     "version": "0.0.1",
     "name": "AvAI",
     "description": "AvAI is a project to improve the vanilla AI of Minecraft",
-    "authors": [
-        "Emanuel"
-    ],
+    "authors": ["Emanuel"],
     "contact": {
         "homepage": "",
         "sources": "https://github.com/Emanuel71836/AvAI"
@@ -15,13 +13,10 @@
     "icon": "assets/avai/icon.png",
     "environment": "*",
     "entrypoints": {
-        "main": [
-            "com.avai.AdvancedAIMod" 
-        ]
+        "main": ["com.avai.AdvancedAIMod"]
     },
-    "mixins": [
-        "avai.mixins.json"
-    ],
+    "mixins": ["avai.mixins.json"],
+    "accessWidener": "avai.accesswidener",
     "depends": {
         "fabricloader": ">=0.18.1",
         "minecraft": "~1.21.11",

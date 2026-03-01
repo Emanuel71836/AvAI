@@ -29,16 +29,11 @@ public abstract class MobAIMixin {
                 avai_behaviorAI = new BehaviorTreeAI(self);
                 LOGGER.info("BehaviorTreeAI initialized for {}", self.getName().getString());
 
-                // replace the path node evaluator with one that avoids open trapdoors
                 PathNavigation navigation = self.getNavigation();
                 if (navigation instanceof GroundPathNavigation) {
-                    // use the accessor to set our custom evaluator if not already set
-                    if (navigation.getNodeEvaluator() == null ||
-                        !(navigation.getNodeEvaluator() instanceof AvoidTrapdoorNodeEvaluator)) {
-                        ((PathNavigationAccessor) navigation).setNodeEvaluator(new AvoidTrapdoorNodeEvaluator());
+                    if (!(navigation.getNodeEvaluator() instanceof AvoidTrapdoorNodeEvaluator)) {
+                        navigation.nodeEvaluator = new AvoidTrapdoorNodeEvaluator();
                         AdvancedAIMod.LOGGER.info("Set AvoidTrapdoorNodeEvaluator for {}", self.getName().getString());
-                    } else {
-                        AdvancedAIMod.LOGGER.debug("AvoidTrapdoorNodeEvaluator already set for {}", self.getName().getString());
                     }
                 }
             } catch (Exception e) {
