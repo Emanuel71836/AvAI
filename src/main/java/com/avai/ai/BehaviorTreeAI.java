@@ -16,7 +16,7 @@ import com.avai.ai.bt.action.Wander;
 import com.avai.ai.villager.VillagerRoutine;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.*;
-import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.villager.Villager;
 
 public class BehaviorTreeAI {
     private final Mob mob;
@@ -40,10 +40,6 @@ public class BehaviorTreeAI {
             return new BehaviorTree(new VillagerRoutine(villager));
         }
         if (mob instanceof Monster) {
-            // monster behavior tree:
-            // 1. sun safety (highest priority)
-            // 2. combat, if player in sight, try flanking in darkness, otherwise chase
-            // 3. wander (fallback) 
             Node root = new Selector(
                 new Sequence(new IsSunDangerous(), new StayInShade()),
                 new Sequence(

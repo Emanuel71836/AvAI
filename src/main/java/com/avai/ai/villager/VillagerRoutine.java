@@ -5,8 +5,9 @@ import com.avai.ai.bt.Node;
 import com.avai.ai.bt.Status;
 import com.avai.ai.bt.composite.Selector;
 import com.avai.ai.bt.action.Wander;
-import net.minecraft.world.entity.npc.Villager;
-import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.villager.Villager;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
+import net.minecraft.core.Holder;   // <-- Added
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +22,14 @@ public class VillagerRoutine implements Node {
     }
 
     private Node buildRoutine() {
-        VillagerProfession prof = villager.getVillagerData().getProfession();
+        Holder<VillagerProfession> prof = villager.getVillagerData().profession();  // Returns Holder
 
         Node workNode;
-        if (prof == VillagerProfession.FARMER) {
+        if (prof.is(VillagerProfession.FARMER)) {
             workNode = new FarmerWork();
-        } else if (prof == VillagerProfession.FISHERMAN) {
+        } else if (prof.is(VillagerProfession.FISHERMAN)) {
             workNode = new FishermanWork();
-        } else if (prof == VillagerProfession.LIBRARIAN) {
+        } else if (prof.is(VillagerProfession.LIBRARIAN)) {
             workNode = new LibrarianWork();
         } else {
             workNode = null;

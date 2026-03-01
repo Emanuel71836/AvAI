@@ -3,13 +3,13 @@ package com.avai.ai.bt.condition;
 import com.avai.ai.MobSnapshot;
 import com.avai.ai.bt.Node;
 import com.avai.ai.bt.Status;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.monster.Zombie;
-import net.minecraft.world.entity.monster.Skeleton;
-import net.minecraft.world.entity.monster.Stray;
-import net.minecraft.world.entity.monster.Husk;
-import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.monster.zombie.Zombie;
+import net.minecraft.world.entity.monster.skeleton.Skeleton;
+import net.minecraft.world.entity.monster.skeleton.Stray;
+import net.minecraft.world.entity.monster.zombie.Husk;
+import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.level.Level;
 
 public class IsSunDangerous implements Node {
@@ -30,7 +30,8 @@ public class IsSunDangerous implements Node {
 
         Level world = mob.level();
         // daytime and not raining = sun dangerous
-        if (world.isDay() && !world.isRaining()) {
+        long timeOfDay = world.getDayTime() % 24000;
+        if (timeOfDay < 13000 && !world.isRaining()) {
             return Status.SUCCESS;
         }
 

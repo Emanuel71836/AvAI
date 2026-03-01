@@ -5,7 +5,7 @@ import com.avai.ai.bt.Node;
 import com.avai.ai.bt.Status;
 import com.avai.event.GlobalEventSystem;
 import com.avai.event.HitEvent;
-import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.villager.Villager;
 
 public class ReactToHit implements Node {
     private enum Phase { MOVE_TO_VICTIM, LOOK_AT_VICTIM, LOOK_AT_ATTACKER, DONE }
